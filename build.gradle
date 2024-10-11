@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Test dependencies (JUnit and Hamcrest for unit tests)
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+test {
+    useJUnitPlatform()  // Ensure JUnit 5 is used
+    testLogging {
+        events "passed", "skipped", "failed"  // Log passed, skipped, and failed tests
+    }
+}
+
+application {
+    mainClass = 'HVL.Scheduler.SimulationExample'
+}
